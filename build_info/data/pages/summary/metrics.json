@@ -1,0 +1,53 @@
+{
+  "data": {
+    "ymax": [
+      2141
+    ], 
+    "hhea.ascent": [
+      2141
+    ], 
+    "OS/2.sTypoAscender": [
+      2141
+    ], 
+    "OS/2.usWinAscent": [
+      2141
+    ], 
+    "ymin": [
+      -607
+    ], 
+    "hhea.descent": [
+      -607
+    ], 
+    "OS/2.sTypoDescender": [
+      -607
+    ], 
+    "OS/2.usWinDescent": [
+      607
+    ], 
+    "hhea.lineGap": [
+      0
+    ], 
+    "OS/2.sTypoLineGap": [
+      0
+    ], 
+    "hhea total": [
+      2748
+    ], 
+    "typo total": [
+      2748
+    ], 
+    "win total": [
+      2748
+    ], 
+    "UPM:Heights": [
+      "2048:2748"
+    ], 
+    "UPM:Heights %": [
+      "134 %"
+    ]
+  }, 
+  "headings": [
+    "Parameter          ", 
+    "Aclonica-Regular.ttf"
+  ]
+}

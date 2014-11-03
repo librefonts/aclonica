@@ -1,0 +1,44 @@
+{
+  "tables": [
+    "head", 
+    "loca", 
+    "name", 
+    "post", 
+    "OS/2", 
+    "fpgm", 
+    "GPOS", 
+    "maxp", 
+    "kern", 
+    "GSUB", 
+    "glyf", 
+    "prep", 
+    "cmap", 
+    "gasp", 
+    "hhea", 
+    "hmtx", 
+    "cvt "
+  ], 
+  "sizes": [
+    {
+      "Aclonica-Regular.ttf": {
+        "head": 54, 
+        "loca": 744, 
+        "name": 1410, 
+        "OS/2": 96, 
+        "fpgm": 2928, 
+        "gasp": 8, 
+        "hhea": 36, 
+        "prep": 134, 
+        "kern": 12306, 
+        "hmtx": 1484, 
+        "GSUB": 746, 
+        "glyf": 40214, 
+        "GPOS": 20326, 
+        "cmap": 2682, 
+        "post": 32, 
+        "maxp": 32, 
+        "cvt ": 56
+      }
+    }
+  ]
+}

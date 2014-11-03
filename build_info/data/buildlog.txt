@@ -1,0 +1,518 @@
+
+
+
+# Bake Begins!
+
+
+
+
+### (1 of 6) Copy sources
+
+$ cp -a /home/travis/build/fontdirectory/aclonica/METADATA.json /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390
+
+$ cp -a /home/travis/build/fontdirectory/aclonica/OFL.txt /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/OFL.txt
+Error: 
+Process Process-2:
+Traceback (most recent call last):
+  File "/opt/python/2.7.8/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/opt/python/2.7.8/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/bakery_cli/pipe/copy.py", line 57, in taskcopy
+    k.execute(pipedata)
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/bakery_cli/pipe/copy.py", line 164, in execute
+    shellutil.copy(_in_license, _out_license, log=self.bakery.logger)
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/bakery_cli/system.py", line 59, in func
+    raise e
+IOError: [Errno 2] No such file or directory: '/home/travis/build/fontdirectory/aclonica/OFL.txt'
+
+$ cp -a /home/travis/build/fontdirectory/aclonica/DESCRIPTION.en_us.html /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390
+
+$ cp -a Aclonica.ttf.ttx Aclonica.ttf._p_r_e_p.ttx Aclonica.ttf._p_o_s_t.ttx Aclonica.ttf._n_a_m_e.ttx Aclonica.ttf._m_a_x_p.ttx Aclonica.ttf._l_o_c_a.ttx Aclonica.ttf._k_e_r_n.ttx Aclonica.ttf._h_m_t_x.ttx Aclonica.ttf._h_h_e_a.ttx Aclonica.ttf._h_e_a_d.ttx Aclonica.ttf._g_l_y_f.ttx Aclonica.ttf._g_a_s_p.ttx Aclonica.ttf._f_p_g_m.ttx Aclonica.ttf._c_v_t.ttx Aclonica.ttf._c_m_a_p.ttx Aclonica.ttf.O_S_2f_2.ttx Aclonica.ttf.GlyphOrder.ttx Aclonica.ttf.G_S_U_B_.ttx Aclonica.ttf.G_P_O_S_.ttx /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/sources
+
+$ cp -a /home/travis/build/fontdirectory/aclonica/COPYRIGHT.txt /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390
+
+
+
+### (2 of 6) Run upstream tests
+
+$ fontbakery-check.py upstream-repo sources
+File `bakery.yaml` does not exist in root of upstream repository
+note: FAIL: bakery_lint/tests/upstream/test_repo.py: TestUpstreamRepo.test_bakery_yaml_exists():  Repository contains bakery.yaml configuration file? : File `bakery.yaml` does not exist in root of upstream repository
+
+note: OK: bakery_lint/tests/upstream/test_repo.py: TestUpstreamRepo.test_copyright_notices_same_across_family():  Each font copyright notice matches? 
+
+note: OK: bakery_lint/tests/upstream/test_repo.py: TestUpstreamRepo.test_description_html_exists():  Repository contains DESCRIPTION.en_us.html file? 
+File `FONTLOG.txt` does not exist in root of upstream repository
+note: FAIL: bakery_lint/tests/upstream/test_repo.py: TestUpstreamRepo.test_fontlog_txt_exists():  Repository contains FONTLOG.txt file? : File `FONTLOG.txt` does not exist in root of upstream repository
+
+note: OK: bakery_lint/tests/upstream/test_repo.py: TestUpstreamRepo.test_metadata_json_exists():  Repository contains METADATA.json file? 
+
+note: OK: bakery_lint/tests/upstream/test_any_glyphs_prepolate.py: FontTestPrepolation.test_family_glyph_names_match():  Each font in family has matching glyph names? 
+
+note: OK: bakery_lint/tests/upstream/test_any_glyphs_prepolate.py: FontTestPrepolation.test_font_prepolation_glyph_contours():  Check that glyphs has same number of contours across family 
+
+note: OK: bakery_lint/tests/upstream/test_any_glyphs_prepolate.py: FontTestPrepolation.test_font_prepolation_glyph_points():  Check that glyphs has same number of points across family 
+
+note: OK: bakery_lint/tests/upstream/test_any_diacritic.py: TestDiacritic.test_diacritic_made_as_component():  Check that diacritic glyph are made completely with composite 
+
+note: OK: bakery_lint/tests/upstream/test_any_diacritic.py: TestDiacritic.test_diacritic_made_as_mark_to_mark():  Check that diacritic glyph are made completely with mark method 
+
+note: OK: bakery_lint/tests/upstream/test_any_diacritic.py: TestDiacritic.test_diacritic_made_as_own_glyphs():  Check that diacritic glyph are made completely with flat method 
+
+$ fontbakery-check.py upstream-ttx Aclonica.ttf.ttx
+'EPAR' not found in ['GlyphOrder', 'head', 'hhea', 'maxp', 'OS/2', 'hmtx', 'cmap', 'fpgm', 'prep', 'cvt ', 'loca', 'glyf', 'kern', 'name', 'post', 'gasp', 'GPOS', 'GSUB']
+note: FAIL: bakery_lint/tests/upstream/test_ttx_requirements.py: SourceTTXTest.test_epar_in_keys():  EPAR table present in font? : 'EPAR' not found in ['GlyphOrder', 'head', 'hhea', 'maxp', 'OS/2', 'hmtx', 'cmap', 'fpgm', 'prep', 'cvt ', 'loca', 'glyf', 'kern', 'name', 'post', 'gasp', 'GPOS', 'GSUB']
+
+note: OK: bakery_lint/tests/upstream/test_ttx_requirements.py: SourceTTXTest.test_ttx_duplicate_glyphs():  Font contains unique glyph names?
+            (Duplicate glyph names prevent font installation on Mac OS X.)
+        
+Glyph ".null" does not comply conventions. A glyph name may be up to 31 characters in length, must be entirely comprised of characters from the following set: A-Z a-z 0-9 .(period) _(underscore). and must not start with a digit or period. The only exception is the special character ".notdef". "twocents", "a1", and "_" are valid glyph names. "2cents" and ".twocents" are not.
+note: FAIL: bakery_lint/tests/upstream/test_ttx_glyphnames_clean.py: TestGlyphNameDoesNotContainsDisallowedChars.test_glyphname_does_not_contain_disallowed_chars():  GlyphName length < 30 and does contain allowed chars only : Glyph ".null" does not comply conventions. A glyph name may be up to 31 characters in length, must be entirely comprised of characters from the following set: A-Z a-z 0-9 .(period) _(underscore). and must not start with a digit or period. The only exception is the special character ".notdef". "twocents", "a1", and "_" are valid glyph names. "2cents" and ".twocents" are not.
+
+note: OK: bakery_lint/tests/upstream/test_ttx_fontfamily_recommendations.py: TTX_FontFamilyNamingTest.test_ttx_family_naming_recommendation():  The font corresponds the font family naming recommendation.
+        See http://forum.fontlab.com/index.php?topic=313.0 
+'Aclonica.ttf' != 'Aclonica-Regular'
+note: FAIL: bakery_lint/tests/upstream/test_ttx_font_filename_eq_familystyle.py: TestTTFSourceFontFileNameEqualsFamilyStyle.test_source_ttf_font_filename_equals_familystyle():  Source TTF Font filename equals family style : 'Aclonica.ttf' != 'Aclonica-Regular'
+
+$ mv /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/sources/Aclonica.ttf.ttx /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/sources/Aclonica-Regular.ttx
+'Aclonica.ttf' != 'Aclonica-Regular'
+note: OK: bakery_lint/tests/upstream/test_ttx_font_filename_eq_familystyle.py: TestTTFSourceFontFileNameEqualsFamilyStyle.test_source_ttf_font_filename_equals_familystyle():  Source TTF Font filename equals family style : 'Aclonica.ttf' != 'Aclonica-Regular'
+
+
+
+### (3 of 6) Convert sources to TTF
+
+$ ttx /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/sources/Aclonica-Regular.ttx
+
+$ mv /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/sources/Aclonica-Regular.ttf /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+
+
+
+### Subset TTFs (pyftsubset) Aclonica-Regular.ttf
+
+$ pyftsubset Aclonica-Regular.latin
+
+$ pyftsubset Aclonica-Regular.menu
+
+
+
+### Test Aclonica-Regular.ttf
+
+$ fontbakery-check.py result Aclonica-Regular.ttf
+
+note: OK: bakery_lint/tests/downstream/test_names_are_ascii_only.py: CheckNamesAreASCIIOnly.test_check_names_are_ascii_only():  NAME and CFF tables must not contain non-ascii characters 
+True is not false
+note: FAIL: bakery_lint/tests/downstream/test_license_related_nameid.py: TestNameIdCopyright.test_name_id_copyright():  Is there `opyright` substring nameID in nameId (10) ? : True is not false
+$ mv /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf.fix /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+True is not false
+note: OK: bakery_lint/tests/downstream/test_license_related_nameid.py: TestNameIdCopyright.test_name_id_copyright():  Is there `opyright` substring nameID in nameId (10) ? : True is not false
+
+note: OK: bakery_lint/tests/downstream/test_license_related_nameid.py: TestNameIdOFLLicense.test_name_id_of_license():  Is there OFL in nameId (13) ? 
+
+note: OK: bakery_lint/tests/downstream/test_license_related_nameid.py: TestNameIdOFLLicenseURL.test_name_id_of_license_url():  Is there OFL in nameId (13) ? 
+
+note: OK: bakery_lint/tests/downstream/test_license_related_nameid.py: TestNameIdApacheLicense.test_name_id_apache_license():  Is there Apache in nameId (13) ? 
+
+note: OK: bakery_lint/tests/downstream/test_license_related_nameid.py: TestNameIdApacheLicenseURL.test_name_id_apache_license_url():  Is there OFL in nameId (13) ? 
+Kerning pairs to total glyphs is 371:2048
+info: FAIL: bakery_lint/tests/downstream/test_kerning_pairs.py: TestKerningPairs.test_kerning_pairs():  Number of kerning pairs? : Kerning pairs to total glyphs is 371:2048
+
+note: OK: bakery_lint/tests/downstream/test_gpos_table_has_kerning_info.py: CheckGposTableHasKerningInfo.test_gpos_table_has_kerning_info():  GPOS table has kerning information 
+gaspRange[65535] value is not 15
+note: FAIL: bakery_lint/tests/downstream/test_gasp_table_value.py: CheckGaspTableType.test_check_gasp_table_type():  Font table gasp should be 15 : gaspRange[65535] value is not 15
+$ fontbakery-fix-gasp.py --set=15 /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+$ mv /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf.fix /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+gaspRange[65535] value is not 15
+note: OK: bakery_lint/tests/downstream/test_gasp_table_value.py: CheckGaspTableType.test_check_gasp_table_type():  Font table gasp should be 15 : gaspRange[65535] value is not 15
+$ fontbakery-fix-gasp.py --set=15 /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+$ mv /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf.fix /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+This font contains both a 'kern' table and a 'GPOS' table.
+  The 'kern' table will only be read if there is no 'kern' feature in 'GPOS'.
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_allowed_numbers_paths_in_composite_glyphs():  Composite glyphs have allowed numbers of paths defined in maxp 
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_allowed_numbers_paths_in_glyphs():  Glyphs have allowed numbers of paths defined in maxp 
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_allowed_numbers_points_in_composite_glyphs():  Composite glyphs have allowed numbers of points defined in maxp 
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_allowed_numbers_points_in_glyphs():  Glyphs have allowed numbers of points defined in maxp 
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_duplicate_glyphs():  Glyph names are unique. 
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_duplicate_unicode_codepoints():  Unicode code points are unique. 
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_flipped_reference_in_glyphs():  References in the glyph haven't been flipped 
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_missing_anchors():  Glyphs have all required anchors.
+            (According to the opentype spec, if a glyph contains an anchor point
+            for one anchor class in a subtable, it must contain anchor points
+            for all anchor classes in the subtable. Even it, logically,
+            they do not apply and are unnecessary.) 
+True is not false
+note: FAIL: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_missing_extrema_in_glyphs():  Glyphs have points at extremas : True is not false
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_overlapped_hints():  Hints do not overlap 
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_points_are_integer_aligned():  Points in glyphs are integer aligned 
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_points_are_not_too_far_apart():  Points (or control points) are not too far apart 
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_postscript_hasnt_limit_hints_in_glyphs():  PostScript hasnt a limit of 96 hints in glyphs 
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_postscript_hasnt_limit_points_in_glyphs():  Not more than 1,500 points in any glyph (a PostScript limit) 
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_referenced_glyphs_are_present():  Glyph names referred to from glyphs present in the font 
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_valid_glyph_names():  Font doesn't have invalid glyph names 
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_valid_length_instructions():  Glyphs instructions have valid lengths 
+True is not false
+note: FAIL: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_validation_glyph_intersect():  Contours do not intersect : True is not false
+
+note: OK: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_validation_open_contours():  Contours are closed 
+True is not false
+note: FAIL: bakery_lint/tests/downstream/test_fontforge_validation_state.py: FontForgeValidateStateTest.test_wrong_direction_in_glyphs():  Contours have correct directions : True is not false
+[Aclonica-Regular.ttf] have not zero linegaps
+note: FAIL: bakery_lint/tests/downstream/test_check_vertical_metrics.py: CheckVerticalLinegapMetrics.test_metrics_linegaps_are_zero():  Check that linegaps in tables are zero : [Aclonica-Regular.ttf] have not zero linegaps
+$ fontbakery-fix-vertical-metrics.py --autofix /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+
+$ mv /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf.fix /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+$ fontbakery-fix-vertical-metrics.py /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+Parameter              Aclonica-Regular.ttf    
+ymax                   2141                    
+hhea.ascent            2141                    
+OS/2.sTypoAscender     2141                    
+OS/2.usWinAscent       2141                    
+ymin                   -607                    
+hhea.descent           -607                    
+OS/2.sTypoDescender    -607                    
+OS/2.usWinDescent      607                     
+hhea.lineGap           0                       
+OS/2.sTypoLineGap      0                       
+hhea total             2748                    
+typo total             2748                    
+win total              2748                    
+UPM:Heights            2048:2748               
+UPM:Heights %          134 %                   
+
+
+[Aclonica-Regular.ttf] have not zero linegaps
+note: OK: bakery_lint/tests/downstream/test_check_vertical_metrics.py: CheckVerticalLinegapMetrics.test_metrics_linegaps_are_zero():  Check that linegaps in tables are zero : [Aclonica-Regular.ttf] have not zero linegaps
+
+note: OK: bakery_lint/tests/downstream/test_check_vertical_metrics.py: CheckVerticalAscentMetrics.test_metrics_ascents_equal_bbox():  Check that ascents values are same as max glyph point 
+
+note: OK: bakery_lint/tests/downstream/test_check_vertical_metrics.py: CheckVerticalDescentMetrics.test_metrics_descents_equal_bbox():  Check that descents values are same as min glyph point 
+UPM:Height is 134%, consider redesigning to 120% or less
+note: FAIL: bakery_lint/tests/downstream/test_check_upm_heights_less_120.py: TestCheckUPMHeightsLess120.test_check_upm_heigths_less_120():  Check if UPM Heights NOT more than 120% : UPM:Height is 134%, consider redesigning to 120% or less
+There should not be unencoded glyphs
+note: FAIL: bakery_lint/tests/downstream/test_check_unencoded_glyph.py: TestFontUnencodedGlyph.test_font_unencoded_glyphs():  Font does not have unencoded glyphs : There should not be unencoded glyphs
+$ fontbakery-fix-glyph-private-encoding.py --autofix /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+$ mv /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf.fix /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+There should not be unencoded glyphs
+note: FAIL: bakery_lint/tests/downstream/test_check_unencoded_glyph.py: TestFontUnencodedGlyph.test_font_unencoded_glyphs():  Font does not have unencoded glyphs : There should not be unencoded glyphs
+
+note: OK: bakery_lint/tests/downstream/test_check_panose_identification.py: CheckPanoseIdentification.test_check_panose_identification():  Check if Panose is not set to monospaced if advancewidth of
+            all glyphs is not equal to each others 
+
+note: OK: bakery_lint/tests/downstream/test_check_os2_width_class.py: CheckOS2WidthClass.test_check_os2_width_class(): 
+
+note: OK: bakery_lint/tests/downstream/test_check_no_problematic_formats.py: CheckNoProblematicFormats.test_check_no_problematic_formats():  Check that font contain required tables 
+
+required: OK: bakery_lint/tests/downstream/test_check_nbsp_width_matches_sp_width.py: CheckNbspWidthMatchesSpWidth.test_check_nbsp_width_matches_sp_width():  Check non-breaking space's advancewidth is the same as space 
+
+required: OK: bakery_lint/tests/downstream/test_check_names_same_across_platforms.py: CheckNamesSameAcrossPlatforms.test_check_names_same_across_platforms():  Font names are same across specific-platforms 
+
+note: OK: bakery_lint/tests/downstream/test_check_name_table_recommendation.py: CheckOTStyleNameRecommendation.test_check_stylename_is_under_recommendations():  Style name must be equal to one of the following four
+            values: "Regular", "Italic", "Bold" or "Bold Italic" 
+
+note: OK: bakery_lint/tests/downstream/test_check_name_table_recommendation.py: CheckOTFamilyNameRecommendation.test_check_opentype_familyname():  OT Family Name for Windows should be equal to Family Name 
+'' != u'Aclonica'
+note: FAIL: bakery_lint/tests/downstream/test_check_name_table_recommendation.py: CheckOTFullNameRecommendation.test_check_opentype_fullname():  Full name matches Windows-only Opentype-specific FullName : '' != u'Aclonica'
+$ fontbakery-fix-opentype-names.py /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+$ mv /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf.fix /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+'' != u'Aclonica'
+note: OK: bakery_lint/tests/downstream/test_check_name_table_recommendation.py: CheckOTFullNameRecommendation.test_check_opentype_fullname():  Full name matches Windows-only Opentype-specific FullName : '' != u'Aclonica'
+
+note: OK: bakery_lint/tests/downstream/test_check_name_table_recommendation.py: CheckSuggestedSubfamilyName.test_suggested_subfamily_name():  Family does not contain subfamily in `name` table 
+
+note: OK: bakery_lint/tests/downstream/test_check_magic_prep_code.py: CheckMagicPREPByteCode.test_prep_magic_code():  Font contains in PREP table magic code 
+
+required: OK: bakery_lint/tests/downstream/test_check_license_included.py: CheckLicenseIncluded.test_license_included_in_font_names():  Check font has a correct license url 
+
+required: OK: bakery_lint/tests/downstream/test_check_italic_angle_agreement.py: CheckItalicAngleAgreement.test_check_italic_angle_agreement():  Check italicangle property zero or negative 
+
+note: OK: bakery_lint/tests/downstream/test_check_hmtx_hhea_max_advance_width_agreement.py: CheckHmtxHheaMaxAdvanceWidthAgreement.test_check_hmtx_hhea_max_advance_width_agreement():  Check if MaxAdvanceWidth agree in the Hmtx and Hhea tables 
+
+note: OK: bakery_lint/tests/downstream/test_check_glyph_existence.py: CheckGlyphExistence.test_euro():  Check if 'EURO SIGN' exists 
+
+required: OK: bakery_lint/tests/downstream/test_check_glyph_existence.py: CheckGlyphExistence.test_nbsp():  Check if 'NO-BREAK SPACE' exists
+
+required: OK: bakery_lint/tests/downstream/test_check_glyph_existence.py: CheckGlyphExistence.test_space():  Check if 'SPACE' exists 
+Glyf table has unreachable data at the end of the table. Expected glyf table length 744 (from loca table), got length 26196 (difference: 25452)
+note: FAIL: bakery_lint/tests/downstream/test_check_glyf_table_length.py: CheckGlyfTableLength.test_check_glyf_table_length():  Check if there is unused data at the end of the glyf table : Glyf table has unreachable data at the end of the table. Expected glyf table length 744 (from loca table), got length 26196 (difference: 25452)
+
+note: OK: bakery_lint/tests/downstream/test_check_full_font_name_begins_with_family_name.py: CheckFullFontNameBeginsWithFamilyName.test_check_full_font_name_begins_with_family_name():  Check if full font name begins with the font family name 
+macStyle (b0) supposed style ended with "Regular"
+note: FAIL: bakery_lint/tests/downstream/test_check_fontname_matches_macstyle.py: CheckFontNameEqualToMacStyleFlags.test_fontname_is_equal_to_macstyle():  Check that fontname is equal to macstyle flags : macStyle (b0) supposed style ended with "Regular"
+Font does not have "DSIG" table
+note: FAIL: bakery_lint/tests/downstream/test_check_font_tables.py: CheckFontHasDsigTable.test_check_font_has_dsig_table():  Check that font has DSIG table : Font does not have "DSIG" table
+$ fontbakery-fix-dsig.py /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+$ mv /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf.fix /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+Font does not have "DSIG" table
+note: OK: bakery_lint/tests/downstream/test_check_font_tables.py: CheckFontHasDsigTable.test_check_font_has_dsig_table():  Check that font has DSIG table : Font does not have "DSIG" table
+
+note: OK: bakery_lint/tests/downstream/test_check_font_tables.py: CheckFontHasNotKernTable.test_no_kern_table_exists():  Check that no "KERN" table exists 
+
+required: OK: bakery_lint/tests/downstream/test_check_font_sanitized_for_chrome_and_firefox.py: OTSTest.test_ots():  Is TTF file correctly sanitized for Firefox and Chrome 
+
+required: OK: bakery_lint/tests/downstream/test_check_font_agreements.py: CheckFsTypeIsNotSet.test_is_fstype_not_set():  Is the OS/2 table fsType set to 0? 
+2048 != 1000
+note: FAIL: bakery_lint/tests/downstream/test_check_font_agreements.py: CheckFontAgreements.test_em_is_1000():  Font em size should be 1000, but doesn't have to be : 2048 != 1000
+
+note: OK: bakery_lint/tests/downstream/test_check_font_agreements.py: CheckFontAgreements.test_font_is_font():  File provided as parameter is TTF font file 
+
+required: OK: bakery_lint/tests/downstream/test_check_font_agreements.py: CheckFontAgreements.test_latin_file_exists():  GF requires a latin subset, so we check that font file exists 
+
+required: OK: bakery_lint/tests/downstream/test_check_font_agreements.py: CheckFontAgreements.test_menu_file_exists():  GF requires a menu subset, so we check that font file exists 
+
+
+
+### Optimize TTF Aclonica-Regular.ttf
+Before: ['GlyphOrder', 'head', 'hhea', 'maxp', 'OS/2', 'hmtx', 'cmap', 'fpgm', 'prep', 'cvt ', 'loca', 'glyf', 'kern', 'name', 'post', 'gasp', 'GPOS', 'GSUB', 'DSIG']
+{'notdef_outline': True, 'name_IDs': ['*'], 'layout_features': ['*'], 'hinting': True, 'legacy_kern': True}
+
+$ ls -l 'Aclonica-Regular.ttf'* # look at the size savings of that subset process
+Aclonica-Regular.ttf.opt: 66516 bytes
+Aclonica-Regular.ttf: 69360 bytes
+
+Now: ['GlyphOrder', 'head', 'hhea', 'maxp', 'OS/2', 'hmtx', 'cmap', 'fpgm', 'prep', 'cvt ', 'loca', 'glyf', 'kern', 'name', 'post', 'gasp', 'GPOS', 'GSUB']
+
+$ mv /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf.opt /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+
+
+
+### Autohint TTFs (ttfautohint) Aclonica-Regular.ttf
+$ ttfautohint -l 7 -r 28 -G 50 -x 13 -w "G" /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf '/home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.autohint.ttf'
+
+
+$ ls -l /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.*ttf # look at the size savings of that subset process
+/home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf: 66516 bytes
+/home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.autohint.ttf: 83588 bytes
+
+
+$ mv /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.autohint.ttf /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+
+
+
+### (4 of 6) Generate METADATA.json (fontbakery-build-metadata.py)
+
+$ fontbakery-build-metadata.py /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390
+{} exists
+
+Designer's name from font is: Astigmatic (AOETI)
+
+Original size: 83588\nGzip size: 43382
+
+Family Name: Aclonica
+
+PS Name: Aclonica-Regular
+
+Full Name: Aclonica Regular
+
+Style: normal
+
+Weight: 400
+
+Filename: Aclonica-Regular.ttf
+
+Copyright: Copyright (c) 2010 by Brian J. Bonislawsky DBA Astigmatic (AOETI). All rights reserved. Available under the Apache 2.0 licence.\rhttp://www.apache.org/licenses/LICENSE-2.0.html
+
+
+
+
+### (5 of 6) Run tests for METADATA.json
+
+$ fontbakery-check.py metadata METADATA.json
+
+required: OK: bakery_lint/tests/metadata_test.py: MetadataSubsetsListTest.test_charset_latin(): Aclonica-Regular.latin is real TrueType file
+
+required: OK: bakery_lint/tests/metadata_test.py: MetadataSubsetsListTest.test_charset_menu(): Aclonica-Regular.menu is real TrueType file
+DESCRIPTION.en_us.html must have size larger than 500 bytes
+note: FAIL: bakery_lint/tests/metadata_test.py: MetadataTest.test_description_is_more_than_500b():  DESCRIPTION.en_us.html is more than 500 bytes : DESCRIPTION.en_us.html must have size larger than 500 bytes
+DESCRIPTION.en_us.html is not real html file
+note: FAIL: bakery_lint/tests/metadata_test.py: MetadataTest.test_description_is_valid_html():  DESCRIPTION.en_us.html is not real html file : DESCRIPTION.en_us.html is not real html file
+False is not true
+note: FAIL: bakery_lint/tests/metadata_test.py: MetadataTest.test_does_not_familyName_exist_in_daltonmaag_catalogue():  DALTONMAAG.com : False is not true
+
+note: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_does_not_familyName_exist_in_fontbureau_catalogue():  FONTBUREAU.com 
+False is not true
+note: FAIL: bakery_lint/tests/metadata_test.py: MetadataTest.test_does_not_familyName_exist_in_fontscom_catalogue():  FONTS.com : False is not true
+False is not true
+note: FAIL: bakery_lint/tests/metadata_test.py: MetadataTest.test_does_not_familyName_exist_in_fontshop_catalogue():  FONTSHOP.com : False is not true
+False is not true
+note: FAIL: bakery_lint/tests/metadata_test.py: MetadataTest.test_does_not_familyName_exist_in_fontsmith_catalogue():  FONTSMITH.com : False is not true
+
+note: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_does_not_familyName_exist_in_houseind_catalogue():  HOUSEIND.com 
+False is not true
+note: FAIL: bakery_lint/tests/metadata_test.py: MetadataTest.test_does_not_familyName_exist_in_myfonts_catalogue():  MYFONTS.com : False is not true
+
+note: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_does_not_familyName_exist_in_veer_catalogue():  VEER.com 
+
+note: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_family_is_listed_in_gwf():  Fontfamily is listed in Google Font Directory 
+
+required: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_metadata_atleast_latin_menu_subsets_exist():  METADATA.json subsets should have at least 'menu' and 'latin' 
+
+required: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_metadata_designer_exists_in_profiles_csv():  Designer exists in GWF profiles.csv 
+
+required: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_metadata_fonts_items_dicts():  METADATA.json fonts key items are dicts 
+
+required: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_metadata_fonts_key_list():  METADATA.json font key should be list 
+
+note: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_metadata_fonts_no_dupes():  METADATA.json fonts propery only should have uniq values 
+
+required: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_metadata_has_unique_style_weight_pairs():  METADATA.json only contains unique style:weight pairs 
+
+required: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_metadata_keys():  METADATA.json should have top keys: ["name", "designer",
+            "license", "visibility", "category", "size", "dateAdded",
+            "fonts", "subsets"] 
+
+required: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_metadata_license():  METADATA.json license is 'Apache2', 'UFL' or 'OFL' 
+
+required: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_metadata_no_unknown_top_keys():  METADATA.json don't have unknown top keys 
+
+required: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_metadata_subsets_key_list():  METADATA.json subsets key should be list 
+
+required: OK: bakery_lint/tests/metadata_test.py: MetadataTest.test_metadata_top_keys_types():  METADATA.json should have proper top keys types 
+"Copyright (c) 2010 by Brian J. Bonislawsky DBA Astigmatic (AOETI). All rights reserved. Available under the Apache 2.0 licence.http://www.apache.org/licenses/LICENSE-2.0.html" should have "Reserved File Name"
+required, info: FAIL: bakery_lint/tests/downstream/test_metadata_font_copyright.py: CheckMetadataContainsReservedFontName.test_copyright_contains_correct_rfn():  Copyright string contains "Reserved File Name" : "Copyright (c) 2010 by Brian J. Bonislawsky DBA Astigmatic (AOETI). All rights reserved. Available under the Apache 2.0 licence.http://www.apache.org/licenses/LICENSE-2.0.html" should have "Reserved File Name"
+
+required: OK: bakery_lint/tests/downstream/test_metadata_font_copyright.py: CheckMetadataContainsReservedFontName.test_copyright_is_consistent_across_family():  METADATA.json fonts copyright string is the same for all items 
+Regexp didn't match: 'Copyright\\s+\\(c\\)\\s+20\\d{2}.*\\(.*@.*.*\\)' not found in u'Copyright (c) 2010 by Brian J. Bonislawsky DBA Astigmatic (AOETI). All rights reserved. Available under the Apache 2.0 licence.\rhttp://www.apache.org/licenses/LICENSE-2.0.html'
+required: FAIL: bakery_lint/tests/downstream/test_metadata_font_copyright.py: CheckMetadataContainsReservedFontName.test_copyright_matches_pattern():  Copyright string matches to Copyright * 20\d\d * (*@*.*) : Regexp didn't match: 'Copyright\\s+\\(c\\)\\s+20\\d{2}.*\\(.*@.*.*\\)' not found in u'Copyright (c) 2010 by Brian J. Bonislawsky DBA Astigmatic (AOETI). All rights reserved. Available under the Apache 2.0 licence.\rhttp://www.apache.org/licenses/LICENSE-2.0.html'
+
+required: OK: bakery_lint/tests/downstream/test_metadata_font_copyright.py: CheckMetadataContainsReservedFontName.test_metadata_copyright_size():  Copyright string should be less than 500 chars 
+
+required: OK: bakery_lint/tests/downstream/test_metadata_agreements.py: TestFontOnDiskFamilyEqualToMetadataJSON.test_font_on_disk_family_equal_in_metadata_json():  Font on disk and in METADATA.json have the same family name 
+
+required: OK: bakery_lint/tests/downstream/test_metadata_agreements.py: TestPostScriptNameInMetadataEqualFontOnDisk.test_postscriptname_in_metadata_equal_to_font_on_disk():  Checks METADATA.json 'postScriptName' matches TTF 'postScriptName' 
+
+note: OK: bakery_lint/tests/downstream/test_metadata_agreements.py: CheckMetadataAgreements.test_font_name_matches_family():  METADATA.json fonts 'name' property should be
+            same as font familyname 
+
+note: OK: bakery_lint/tests/downstream/test_metadata_agreements.py: CheckMetadataAgreements.test_metadata_family_values_are_all_the_same():  Check that METADATA family values are all the same 
+
+required: OK: bakery_lint/tests/downstream/test_metadata_agreements.py: CheckMetadataAgreements.test_metadata_filename_matches_postscriptname():  METADATA.json `filename` matches `postScriptName` 
+
+note: OK: bakery_lint/tests/downstream/test_metadata_agreements.py: CheckMetadataAgreements.test_metadata_font_have_regular():  According GWF standarts font should have Regular style. 
+
+note: OK: bakery_lint/tests/downstream/test_metadata_agreements.py: CheckMetadataAgreements.test_metadata_fonts_fields_have_fontname():  METADATA.json fonts items fields "name", "postScriptName",
+            "fullName", "filename" contains font name right format 
+
+note: OK: bakery_lint/tests/downstream/test_metadata_agreements.py: CheckMetadataAgreements.test_metadata_fullname_is_equal_to_internal_font_fullname():  METADATA.json 'fullname' value matches internal 'fullname' 
+
+required: OK: bakery_lint/tests/downstream/test_metadata_agreements.py: CheckMetadataAgreements.test_metadata_fullname_matches_postScriptName():  METADATA.json `fullName` matches `postScriptName` 
+
+required: OK: bakery_lint/tests/downstream/test_metadata_agreements.py: CheckMetadataAgreements.test_metadata_regular_is_400():  Regular should be 400 
+
+note: OK: bakery_lint/tests/downstream/test_metadata_agreements.py: CheckMetadataAgreements.test_metadata_regular_is_normal():  Usually Regular should be normal style 
+
+required: OK: bakery_lint/tests/downstream/test_check_text_files_exist.py: CheckTextFilesExist.test_copyrighttxt_exists():  Font folder should contains COPYRIGHT.txt 
+
+required: OK: bakery_lint/tests/downstream/test_check_text_files_exist.py: CheckTextFilesExist.test_description_exists():  Font folder should contains DESCRIPTION.en_us.html 
+['FONTLOG.txt'] does not exist in project
+note: FAIL: bakery_lint/tests/downstream/test_check_text_files_exist.py: CheckTextFilesExist.test_fontlogtxt_exists():  Font folder should contains FONTLOG.txt : ['FONTLOG.txt'] does not exist in project
+['LICENSE.txt', 'OFL.txt'] does not exist in project
+required: FAIL: bakery_lint/tests/downstream/test_check_text_files_exist.py: CheckTextFilesExist.test_licensetxt_exists():  Font folder should contains LICENSE.txt : ['LICENSE.txt', 'OFL.txt'] does not exist in project
+
+note: OK: bakery_lint/tests/downstream/test_check_subsets_exists.py: CheckSubsetsExist.test_check_subsets_exists():  Check that corresponding subset files exist for fonts 
+
+note: OK: bakery_lint/tests/downstream/test_check_monospace_agreements.py: CheckMonospaceAgreement.test_check_monospace_agreement():  Monospace font has hhea.advanceWidthMax equal to each
+            glyph advanceWidth 
+
+note: OK: bakery_lint/tests/downstream/test_check_metadata_style_matches_names.py: CheckItalicStyleMatchesMacStyle.test_check_italic_style_matches_names():  Check metadata.json font.style `italic` matches font internal 
+
+note: OK: bakery_lint/tests/downstream/test_check_metadata_style_matches_names.py: CheckNormalStyleMatchesMacStyle.test_check_normal_style_matches_names():  Check metadata.json font.style `italic` matches font internal 
+
+note: OK: bakery_lint/tests/downstream/test_check_metadata_matches_nametable.py: CheckMetadataMatchesNameTable.test_check_metadata_matches_nametable():  Metadata key-value match to table name fields 
+
+required: OK: bakery_lint/tests/downstream/test_check_metadata_fields.py: CheckMetadataFields.test_check_metadata_fields():  Check METADATA.json "fonts" property items have required field 
+Aclonica-Regular.ttf: Menu is missing glyphs: " "
+note: FAIL: bakery_lint/tests/downstream/test_check_menu_contains_proper_glyphs.py: CheckMenuSubsetContainsProperGlyphs.test_check_menu_contains_proper_glyphs():  Check menu file contains proper glyphs : Aclonica-Regular.ttf: Menu is missing glyphs: " "
+
+note: OK: bakery_lint/tests/downstream/test_check_glyph_consistency.py: CheckGlyphConsistencyInFamily.test_the_same_encodings_of_glyphs_across_family():  The same unicode encodings of glyphs across family? 
+
+note: OK: bakery_lint/tests/downstream/test_check_glyph_consistency.py: CheckGlyphConsistencyInFamily.test_the_same_names_of_glyphs_across_family():  The same names of glyphs across family? 
+
+note: OK: bakery_lint/tests/downstream/test_check_glyph_consistency.py: CheckGlyphConsistencyInFamily.test_the_same_number_of_glyphs_across_family():  The same number of glyphs across family? 
+
+note: OK: bakery_lint/tests/downstream/test_check_font_name_not_in_camelcase.py: CheckFontNameNotInCamelCase.test_fontname_not_in_camel_case():  Check if fontname is not camel cased 
+
+required: OK: bakery_lint/tests/downstream/test_check_files_menu_agreements.py: CheckFontsMenuAgreements.test_menu_file_agreement():  Check fonts have corresponding menu files 
+
+note: OK: bakery_lint/tests/downstream/test_check_familyname_matches_fontnames.py: CheckFamilyNameMatchesFontNames.test_check_familyname_matches_fontnames():  Check font name is the same as family name 
+
+note: OK: bakery_lint/tests/downstream/test_check_canonical_weights.py: CheckCanonicalWeights.test_check_canonical_weights():  Check that weights have canonical value 
+
+note: OK: bakery_lint/tests/downstream/test_check_canonical_weights.py: CheckPostScriptNameMatchesWeight.test_postscriptname_contains_correct_weight():  Metadata weight matches postScriptName 
+
+note: OK: bakery_lint/tests/downstream/test_check_canonical_weights.py: CheckFontWeightSameAsInMetadata.test_font_weight_same_as_in_metadata():  Font weight matches metadata.json value of key "weight" 
+
+note: OK: bakery_lint/tests/downstream/test_check_canonical_weights.py: CheckFullNameEqualCanonicalName.test_metadata_contains_current_font():  METADATA.json should contains testing font, under canonic name
+
+note: OK: bakery_lint/tests/downstream/test_check_canonical_styles.py: CheckCanonicalStyles.test_check_canonical_styles():  Test If font styles are canonical 
+
+required: OK: bakery_lint/tests/downstream/test_check_canonical_filenames.py: CheckCanonicalFilenames.test_check_canonical_filenames():  Test If filename is canonical 
+
+
+
+### (6 of 6) pyfontaine
+
+$ fontaine --collections subsets --text /home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/sources/Aclonica-Regular.ttx > fontaine.txt
+WARNING: Please install PyICU <https://pypi.python.org/pypi/PyICU> to enable CLDR related features, perhaps with: pip install pyicu
+end of pyfontaine process
+
+Compiling "/home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/sources/Aclonica-Regular.ttx" to "/home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/sources/Aclonica-Regular.ttf"...
+Parsing 'GlyphOrder' table...
+Parsing 'head' table...
+Parsing 'hhea' table...
+Parsing 'maxp' table...
+Parsing 'OS/2' table...
+Parsing 'hmtx' table...
+Parsing 'cmap' table...
+Parsing 'fpgm' table...
+Parsing 'prep' table...
+Parsing 'cvt ' table...
+Parsing 'loca' table...
+Parsing 'glyf' table...
+Parsing 'kern' table...
+Parsing 'name' table...
+Parsing 'post' table...
+Parsing 'gasp' table...
+Parsing 'GPOS' table...
+Parsing 'GSUB' table...
+strippedname:/home/travis/build/fontdirectory/aclonica/builds/2746e457bdb6c42c89faa2803030ba609e935390/Aclonica-Regular.ttf
+{
+  "name": "Aclonica", 
+  "designer": "Astigmatic", 
+  "license": "Apache2", 
+  "visibility": "External", 
+  "category": "Sans Serif", 
+  "size": 37610, 
+  "fonts": [
+    {
+      "name": "Aclonica", 
+      "postScriptName": "Aclonica-Regular", 
+      "fullName": "Aclonica Regular", 
+      "style": "normal", 
+      "weight": 400, 
+      "filename": "Aclonica-Regular.ttf", 
+      "copyright": "Copyright (c) 2010 by Brian J. Bonislawsky DBA Astigmatic (AOETI). All rights reserved. Available under the Apache 2.0 licence.\rhttp://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ], 
+  "subsets": [
+    "latin", 
+    "menu"
+  ], 
+  "dateAdded": "2011-04-27"
+}
